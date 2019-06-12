@@ -26,13 +26,13 @@ class DynomiteConfiguration {
 
     @Value("\${spring.application.name}")
     private lateinit var applicationName: String
-    @Value("\${br.com.mtz.configs.dynomite.cluster.name}")
+    @Value("\${dynomite.cluster.name}")
     private lateinit var clusterName: String
-    @Value("\${br.com.mtz.configs.dynomite.cluster.hosts}")
+    @Value("\${dynomite.cluster.hosts}")
     private lateinit var clusterHosts: String
-    @Value("\${br.com.mtz.configs.dynomite.cluster.local.rack:#{null}}")
+    @Value("\${dynomite.cluster.local.rack:#{null}}")
     private var localRack: String? = null
-    @Value("\${br.com.mtz.configs.dynomite.cluster.local.datacenter:#{null}}")
+    @Value("\${dynomite.cluster.local.datacenter:#{null}}")
     private var localDatacenter: String? = null
 
     @Autowired

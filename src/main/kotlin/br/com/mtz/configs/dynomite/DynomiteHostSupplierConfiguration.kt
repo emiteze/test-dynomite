@@ -19,7 +19,7 @@ class DynomiteHostSupplierConfiguration {
         private const val HOST_DELIMITER: String = ":"
     }
 
-    @Value("\${br.com.mtz.configs.dynomite.cluster.hosts}")
+    @Value("\${dynomite.cluster.hosts}")
     private lateinit var clusterHosts: String
 
     @Bean
