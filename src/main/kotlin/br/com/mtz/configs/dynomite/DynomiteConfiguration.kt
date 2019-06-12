@@ -1,4 +1,4 @@
-package dynomite
+package br.com.mtz.configs.dynomite
 
 import com.netflix.dyno.connectionpool.Host
 import com.netflix.dyno.connectionpool.HostSupplier
@@ -8,7 +8,7 @@ import com.netflix.dyno.connectionpool.impl.lb.AbstractTokenMapSupplier
 import com.netflix.dyno.connectionpool.impl.lb.HostToken
 import com.netflix.dyno.jedis.DynoJedisClient
 import com.fasterxml.jackson.databind.ObjectMapper
-import jackson.JacksonConfiguration
+import br.com.mtz.configs.jackson.JacksonConfiguration
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
@@ -26,13 +26,13 @@ class DynomiteConfiguration {
 
     @Value("\${spring.application.name}")
     private lateinit var applicationName: String
-    @Value("\${dynomite.cluster.name}")
+    @Value("\${br.com.mtz.configs.dynomite.cluster.name}")
     private lateinit var clusterName: String
-    @Value("\${dynomite.cluster.hosts}")
+    @Value("\${br.com.mtz.configs.dynomite.cluster.hosts}")
     private lateinit var clusterHosts: String
-    @Value("\${dynomite.cluster.local.rack:#{null}}")
+    @Value("\${br.com.mtz.configs.dynomite.cluster.local.rack:#{null}}")
     private var localRack: String? = null
-    @Value("\${dynomite.cluster.local.datacenter:#{null}}")
+    @Value("\${br.com.mtz.configs.dynomite.cluster.local.datacenter:#{null}}")
     private var localDatacenter: String? = null
 
     @Autowired

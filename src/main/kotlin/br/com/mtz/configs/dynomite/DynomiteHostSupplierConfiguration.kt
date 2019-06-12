@@ -1,4 +1,4 @@
-package dynomite
+package br.com.mtz.configs.dynomite
 
 import com.netflix.dyno.connectionpool.Host
 import com.netflix.dyno.connectionpool.HostSupplier
@@ -19,7 +19,7 @@ class DynomiteHostSupplierConfiguration {
         private const val HOST_DELIMITER: String = ":"
     }
 
-    @Value("\${dynomite.cluster.hosts}")
+    @Value("\${br.com.mtz.configs.dynomite.cluster.hosts}")
     private lateinit var clusterHosts: String
 
     @Bean

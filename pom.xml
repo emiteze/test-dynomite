@@ -14,7 +14,7 @@
     <groupId>br.com.mtz</groupId>
     <artifactId>test-dynomite</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>test-dynomite</name>
+    <name>test-br.com.mtz.configs.dynomite</name>
     <description>Demo project for testing Dynomite</description>
 
     <properties>
@@ -47,13 +47,11 @@
                     <artifactId>slf4j-log4j12</artifactId>
                 </exclusion>
             </exclusions>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-kotlin</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <dependency>

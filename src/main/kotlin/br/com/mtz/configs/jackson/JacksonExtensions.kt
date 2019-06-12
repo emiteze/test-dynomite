@@ -1,4 +1,4 @@
-package jackson
+package br.com.mtz.configs.jackson
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.DeserializationFeature

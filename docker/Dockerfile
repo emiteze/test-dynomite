@@ -22,7 +22,7 @@
 FROM ubuntu
 
 # File Author / Maintainer
-MAINTAINER Ioannis Papapanagiotou - dynomite@netflix.com
+MAINTAINER Ioannis Papapanagiotou - br.com.mtz.configs.dynomite@netflix.com
 
 # Update the repository sources list and Install package Build Essential
 RUN apt-get update && \
@@ -39,20 +39,20 @@ RUN apt-get update && \
 	tcl8.5
 
 # Clone the Dynomite Git
-RUN git clone https://github.com/Netflix/dynomite.git
+RUN git clone https://github.com/Netflix/br.com.mtz.configs.dynomite.git
 RUN echo 'Git repo has been cloned in your Docker VM'
 
 RUN echo 'copy file'
-COPY scripts/startup.sh dynomite/startup.sh
+COPY scripts/startup.sh br.com.mtz.configs.dynomite/startup.sh
 RUN echo 'done copying file'
 
-RUN echo 'copy node dynomite'
-COPY scripts/node01.yml dynomite/node01.yml
-COPY scripts/node02.yml dynomite/node02.yml
-RUN echo 'done copying node dynomite'
+RUN echo 'copy node br.com.mtz.configs.dynomite'
+COPY scripts/node01.yml br.com.mtz.configs.dynomite/node01.yml
+COPY scripts/node02.yml br.com.mtz.configs.dynomite/node02.yml
+RUN echo 'done copying node br.com.mtz.configs.dynomite'
 
 # Move to working directory
-WORKDIR dynomite/
+WORKDIR br.com.mtz.configs.dynomite/
 
 # Autoreconf
 RUN autoreconf -fvi \
@@ -84,4 +84,4 @@ EXPOSE 8102
 RUN sysctl vm.overcommit_memory=1
 
 # Set the entry-point to be the startup script
-ENTRYPOINT ["/dynomite/startup.sh"]
+ENTRYPOINT ["/br.com.mtz.configs.dynomite/startup.sh"]
