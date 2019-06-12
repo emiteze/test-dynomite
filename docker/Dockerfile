@@ -46,10 +46,10 @@ RUN echo 'copy file'
 COPY scripts/startup.sh dynomite/startup.sh
 RUN echo 'done copying file'
 
-RUN echo 'copy node configs'
+RUN echo 'copy node dynomite'
 COPY scripts/node01.yml dynomite/node01.yml
 COPY scripts/node02.yml dynomite/node02.yml
-RUN echo 'done copying node configs'
+RUN echo 'done copying node dynomite'
 
 # Move to working directory
 WORKDIR dynomite/
