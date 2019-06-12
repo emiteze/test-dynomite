@@ -1,6 +1,6 @@
 dyn_o_mite:
   datacenter: dc1
-  rack: rack1
+  rack: dc1-rack1
   dyn_listen: 0.0.0.0:8101
   dyn_seeds:
     - dynomite01:8102:rack1:dc1:691714865
