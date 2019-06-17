@@ -1,5 +1,6 @@
 package br.com.mtz.configs.dynomite
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.netflix.dyno.connectionpool.Host
 import com.netflix.dyno.connectionpool.HostSupplier
 import com.netflix.dyno.connectionpool.TokenMapSupplier
@@ -7,8 +8,6 @@ import com.netflix.dyno.connectionpool.impl.ConnectionPoolConfigurationImpl
 import com.netflix.dyno.connectionpool.impl.lb.AbstractTokenMapSupplier
 import com.netflix.dyno.connectionpool.impl.lb.HostToken
 import com.netflix.dyno.jedis.DynoJedisClient
-import com.fasterxml.jackson.databind.ObjectMapper
-import br.com.mtz.configs.jackson.JacksonConfiguration
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
@@ -16,7 +15,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Import
 
 @Configuration
-@Import(DynomiteHostSupplierConfiguration::class, JacksonConfiguration::class)
+@Import(DynomiteHostSupplierConfiguration::class)
 class DynomiteConfiguration {
 
     companion object {

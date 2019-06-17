@@ -43,12 +43,11 @@ RUN git clone https://github.com/Netflix/dynomite.git
 RUN echo 'Git repo has been cloned in your Docker VM'
 
 RUN echo 'copy file'
-COPY scripts/startup.sh dynomite/startup.sh
+COPY scripts/startup01.sh dynomite/startup.sh
 RUN echo 'done copying file'
 
 RUN echo 'copy node dynomite'
 COPY scripts/node01.yml dynomite/node01.yml
-COPY scripts/node02.yml dynomite/node02.yml
 RUN echo 'done copying node dynomite'
 
 # Move to working directory
