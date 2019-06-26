@@ -6,7 +6,7 @@ services:
       - 8102:8102
       - 22222:22222
     volumes:
-      - ./dynomite01.yml:/dynomite/conf/redis_single.yml
+      - ./node01.yml:/dynomite/conf/redis_single.yml
     networks:
       - custom
 
@@ -16,7 +16,7 @@ services:
       - 8103:8102
       - 22223:22222
     volumes:
-      - ./dynomite02.yml:/dynomite/conf/redis_single.yml
+      - ./node02.yml:/dynomite/conf/redis_single.yml
     networks:
       - custom
 
@@ -26,7 +26,7 @@ services:
       - 8104:8102
       - 22224:22222
     volumes:
-      - ./dynomite03.yml:/dynomite/conf/redis_single.yml
+      - ./node03.yml:/dynomite/conf/redis_single.yml
     networks:
       - custom
 
