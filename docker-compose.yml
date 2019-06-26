@@ -16,6 +16,14 @@ services:
     networks:
       - custom
 
+  dynomite03:
+    image: dynomite03_node
+    ports:
+      - 8104:8102
+      - 22224:22222
+    networks:
+      - custom
+
 networks:
   custom:
     driver: bridge

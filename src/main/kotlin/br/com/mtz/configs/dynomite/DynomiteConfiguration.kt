@@ -95,6 +95,7 @@ class DynomiteConfiguration {
                     token = hostToken.token.toString(),
                     hostname = hostToken.host.hostName,
                     zone = hostToken.host.rack,
+                    port = hostToken.host.port,
                     dc = hostToken.host.datacenter
                 )
             }
@@ -103,6 +104,7 @@ class DynomiteConfiguration {
     private fun buildTokenMapSupplier(hosts: List<HostToken>): TokenMapSupplier {
         val tokenHosts = buildTokenHosts(hosts)
         val json = objectMapper.writeValueAsString(tokenHosts)
+        val hostTokens = ArrayList<HostToken>()
 
         return object : AbstractTokenMapSupplier() {
             override fun getTopologyJsonPayload(hostName: String): String {
@@ -112,6 +114,19 @@ class DynomiteConfiguration {
             override fun getTopologyJsonPayload(activeHosts: Set<Host>): String {
                 return json
             }
+
+            override fun getTokens(activeHosts: Set<Host>): List<HostToken> {
+                var activeHostsIndex = activeHosts.size.toLong()
+                activeHosts.forEach { host ->
+                    hostTokens.add(HostToken(activeHostsIndex, host))
+                    activeHostsIndex--
+                }
+                return hostTokens
+            }
+
+            override fun getTokenForHost(host: Host, activeHosts: Set<Host>): HostToken {
+                return hostTokens.first { it === host }
+            }
         }
     }
 
@@ -119,6 +134,7 @@ class DynomiteConfiguration {
         val token: String,
         val hostname: String,
         val zone: String,
+        val port: Int,
         val dc: String
     )
 
