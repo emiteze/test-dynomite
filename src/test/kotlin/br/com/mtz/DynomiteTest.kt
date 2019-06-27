@@ -17,7 +17,10 @@ class DynomiteTest {
     @Test
     fun testInsertionInDynomite(){
 
-        print("Testing client --------- ${dynoClient.applicationName}")
+        println("Trying to get mtz ---- ${dynoClient.get("mtz")}")
+        println("Trying to get brn ---- ${dynoClient.get("brn")}")
+        println("Trying to get htk ---- ${dynoClient.get("htk")}")
+        println("Trying to get palco_verde ---- ${dynoClient.get("palco_verde")}")
 
     }
 
