@@ -1,14 +1,19 @@
 dyn_o_mite:
   datacenter: dc1
+  rack: dc1-rack1
   dyn_listen: 0.0.0.0:8101
+  dyn_seeds:
+    - dynomite01:8101:dc1-rack1:dc1:2147483647
+    - dynomite03:8101:dc1-rack2:dc1:4294967295
+  listen: 0.0.0.0:8102
   dyn_port: 8101
   dyn_seed_provider: simple_provider
-  dyn_seeds:
-    - dynomite01:8101:dc1-rack1:dc1:1431655765
-    - dynomite03:8101:dc1-rack1:dc1:4294967295
-  listen: 0.0.0.0:8102
-  rack: dc1-rack1
   servers:
-    - 127.0.0.1:22122:1
-  timeout: 150000
-  tokens: 2863311530
+    - 0.0.0.0:22122:1
+  tokens: 4294967294
+  secure_server_option: datacenter
+  pem_key_file: conf/dynomite.pem
+  data_store: 0
+  stats_listen: 0.0.0.0:22222
+  read_consistency: DC_ONE
+  write_consistency: DC_ONE
