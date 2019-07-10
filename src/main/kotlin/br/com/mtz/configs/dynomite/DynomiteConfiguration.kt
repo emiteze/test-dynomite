@@ -5,6 +5,7 @@ import com.netflix.dyno.connectionpool.Host
 import com.netflix.dyno.connectionpool.HostSupplier
 import com.netflix.dyno.connectionpool.TokenMapSupplier
 import com.netflix.dyno.connectionpool.impl.ConnectionPoolConfigurationImpl
+import com.netflix.dyno.connectionpool.impl.RetryNTimes
 import com.netflix.dyno.connectionpool.impl.lb.AbstractTokenMapSupplier
 import com.netflix.dyno.connectionpool.impl.lb.HostToken
 import com.netflix.dyno.jedis.DynoJedisClient
@@ -47,27 +48,7 @@ class DynomiteConfiguration {
         val poolConfiguration = ConnectionPoolConfigurationImpl(clusterName)
             .setLocalDataCenter(localDatacenter)
             .setLocalRack(localRack)
-            .withHostSupplier(hostSupplier)
-            .withTokenSupplier(buildTokenMapSupplier(hostTokenSupplier.getHostTokens()))
-
-        return DynoJedisClient.Builder()
-            .withApplicationName(applicationName)
-            .withDynomiteClusterName(clusterName)
-            .withHostSupplier(hostSupplier)
-            .withCPConfig(poolConfiguration)
-            .build()
-    }
-
-    @Bean(name = ["readClient"])
-    fun dynoReadClient(
-        hostSupplier: HostSupplier,
-        hostTokenSupplier: HostTokenSupplier
-    ): DynoJedisClient {
-        setAffinitySystemProperties()
-
-        val poolConfiguration = ConnectionPoolConfigurationImpl(clusterName)
-            .setLocalDataCenter(localDatacenter)
-            .setLocalRack(localRack)
+            .setRetryPolicyFactory(RetryNTimes.RetryFactory(3, true))
             .withHostSupplier(hostSupplier)
             .withTokenSupplier(buildTokenMapSupplier(hostTokenSupplier.getHostTokens()))
 
